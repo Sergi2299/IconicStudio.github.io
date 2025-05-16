@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Iconic Studio</title>
-  <link rel="icon" href="logo.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
 </head>
 <body>
   <header>
@@ -40,31 +42,54 @@
   <section id="galeria">
     <h2>Proyectos recientes</h2>
     <div class="imagenes">
-      <img src="logo1.jpg" alt="Logo1" />
-      <img src="logo2.jpg" alt="Logo2" />
-      <img src="logo3.png" alt="Logo3" />
+      <img src="logo1.jpg" alt="Logo 1" />
+      <img src="logo2.jpg" alt="Logo 2" />
+      <img src="logo3.png" alt="Logo 3" />
     </div>
   </section>
 
   <section id="contacto">
     <h2>Contáctanos</h2>
-    <form action="https://formsubmit.co/sergifenollar88@gmail.com" method="POST">
+    <form id="formulario-contacto">
       <input type="text" name="nombre" placeholder="Tu nombre" required />
       <input type="email" name="email" placeholder="Tu email" required />
       <textarea name="mensaje" placeholder="Escribe tu mensaje..." rows="5" required></textarea>
-
-      <!-- Redirige a la página gracias.html tras enviar -->
-      <input type="hidden" name="_next" value="gracias.html" />
-      <!-- Desactiva el CAPTCHA -->
-      <input type="hidden" name="_captcha" value="false" />
-
       <button type="submit">Enviar mensaje</button>
     </form>
+
+    <div id="mensaje-enviado" style="display: none; margin-top: 20px; color: green; font-weight: bold;">
+      ¡Gracias por confiar en nosotros! En breves te contactaremos.
+    </div>
   </section>
 
   <footer>
     &copy; 2025 Iconic Studio. Todos los derechos reservados.
   </footer>
+
+  <script>
+    document.getElementById("formulario-contacto").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+
+      fetch("https://formsubmit.co/ajax/sergifenollar88@gmail.com", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          this.reset();
+          document.getElementById("mensaje-enviado").style.display = "block";
+        } else {
+          alert("Ocurrió un error al enviar el mensaje.");
+        }
+      }).catch(error => {
+        alert("Error al enviar el formulario. Intenta de nuevo.");
+      });
+    });
+  </script>
 </body>
-</html
+</html>
 
