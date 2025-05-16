@@ -25,6 +25,11 @@ header {
 .logo-img {
   width: 80px;
   height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1);
 }
 
 .header-texto h1 {
@@ -35,6 +40,19 @@ header {
 .header-texto p {
   margin: 5px 0 0 0;
   font-style: italic;
+}
+
+/* Responsive logo y textos header */
+@media (max-width: 600px) {
+  .logo-img {
+    width: 60px;
+  }
+  .header-texto h1 {
+    font-size: 1.5rem;
+  }
+  .header-texto p {
+    font-size: 0.9rem;
+  }
 }
 
 /* Navegación */
