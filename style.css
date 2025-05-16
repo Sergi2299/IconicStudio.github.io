@@ -1,0 +1,148 @@
+/* Fuente principal */
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Encabezado */
+header {
+  background-color: #111;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.logo-img {
+  width: 80px;
+  height: auto;
+}
+
+.header-texto h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.header-texto p {
+  margin: 5px 0 0 0;
+  font-style: italic;
+}
+
+/* Navegación */
+nav {
+  background-color: #222;
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #00bfff;
+}
+
+/* Secciones generales */
+section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+  color: #111;
+}
+
+/* Servicios */
+.servicio {
+  background-color: white;
+  border-left: 5px solid #00bfff;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Galería */
+.imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.imagenes img {
+  width: 250px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.imagenes img:hover {
+  transform: scale(1.05);
+}
+
+/* Formulario de contacto */
+form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form input,
+form textarea {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #00bfff;
+  outline: none;
+}
+
+button {
+  background-color: #00bfff;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0099cc;
+}
+
+/* Footer */
+footer {
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iconic Studio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img src="logo.png" alt="Iconic Studio Logo" class="logo-img" />
+      <div class="header-texto">
+        <h1>Iconic Studio</h1>
+        <p>Tu imagina, nosotros creamos</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <section id="servicios">
+    <h2>¿Qué ofrecemos?</h2>
+    <div class="servicio">
+      <h3>Diseño de logos</h3>
+      <p>Diseñamos tu logo profesional desde cero, con estilo moderno y adaptado a tu marca.</p>
+    </div>
+    <div class="servicio">
+      <h3>Creación de páginas web</h3>
+      <p>Desarrollamos páginas responsive y atractivas para empresas, autónomos o emprendedores.</p>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <h2>Proyectos recientes</h2>
+    <div class="imagenes">
+      <img src="logo1.jpg" alt="Logo1" />
+      <img src="logo2.jpg" alt="Logo2" />
+      <img src="logo3.png" alt="Logo3" />
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contáctanos</h2>
+    <form action="https://formsubmit.co/sergifenollar88@gmail.com" method="POST">
+      <input type="text" name="nombre" placeholder="Tu nombre" required />
+      <input type="email" name="email" placeholder="Tu email" required />
+      <textarea name="mensaje" placeholder="Escribe tu mensaje..." rows="5" required></textarea>
+
+      <!-- Redirige a la página gracias.html tras enviar -->
+      <input type="hidden" name="_next" value="gracias.html" />
+      <!-- Desactiva el CAPTCHA -->
+      <input type="hidden" name="_captcha" value="false" />
+
+      <button type="submit">Enviar mensaje</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Iconic Studio. Todos los derechos reservados.
+  </footer>
+</body>
+</html>
