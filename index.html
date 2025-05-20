@@ -52,7 +52,7 @@
       <input type="text" name="nombre" placeholder="Tu nombre" required />
       <input type="email" name="email" placeholder="Tu email" required />
       <textarea name="mensaje" placeholder="Escribe tu mensaje..." rows="5" required></textarea>
-
+      
       <label for="captcha-input" class="captcha-label">Escribe el número: <span id="captcha-code"></span></label>
       <input type="text" id="captcha-input" name="captcha" placeholder="Ejemplo: 8976" required pattern="\d{4}" maxlength="4" />
 
@@ -68,8 +68,8 @@
     &copy; 2025 Iconic Studio. Todos los derechos reservados.
   </footer>
 
-  <!-- Aviso cookies invasivo -->
-  <div class="cookie-consent" id="cookie-consent" role="alert" aria-live="polite" aria-atomic="true">
+  <!-- Ventana de cookies centrada -->
+  <div class="cookie-consent" id="cookie-consent" role="dialog" aria-modal="true">
     <div class="cookie-box">
       <p>
         Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra
@@ -90,7 +90,7 @@
 
     function generarCaptcha() {
       currentCaptcha = '';
-      for (let i = 0; i < 4; i++) {
+      for(let i=0; i<4; i++) {
         currentCaptcha += Math.floor(Math.random() * 10);
       }
       captchaCodeEl.textContent = currentCaptcha;
@@ -98,15 +98,14 @@
 
     generarCaptcha();
 
-    // Validar formulario con captcha
     document.getElementById("formulario-contacto").addEventListener("submit", function (e) {
       e.preventDefault();
 
       const captchaInput = document.getElementById("captcha-input").value.trim();
 
-      if (captchaInput !== currentCaptcha) {
+      if(captchaInput !== currentCaptcha) {
         alert("Captcha incorrecto. Por favor, introduce el número correcto.");
-        generarCaptcha(); // Regenerar captcha si falla
+        generarCaptcha(); 
         return;
       }
 
@@ -134,13 +133,13 @@
       });
     });
 
-    // Aviso cookies
+    // Cookies
     const cookieConsent = document.getElementById('cookie-consent');
-    const btnAcceptCookies = document.getElementById('btn-accept-cookies');
-    const btnRejectCookies = document.getElementById('btn-reject-cookies');
+    const btnAccept = document.getElementById('btn-accept-cookies');
+    const btnReject = document.getElementById('btn-reject-cookies');
 
     function checkCookieConsent() {
-      return localStorage.getItem('cookieConsent') === 'accepted' || localStorage.getItem('cookieConsent') === 'rejected';
+      return localStorage.getItem('cookieConsent') !== null;
     }
 
     function setCookieConsent(value) {
@@ -148,12 +147,18 @@
       cookieConsent.style.display = 'none';
     }
 
-    if (checkCookieConsent()) {
-      cookieConsent.style.display = 'none';
+    if (!checkCookieConsent()) {
+      cookieConsent.style.display = 'flex';
     }
 
-    btnAcceptCookies.addEventListener('click', () => setCookieConsent('accepted'));
-    btnRejectCookies.addEventListener('click', () => setCookieConsent('rejected'));
+    btnAccept.addEventListener('click', () => {
+      setCookieConsent('accepted');
+    });
+
+    btnReject.addEventListener('click', () => {
+      setCookieConsent('rejected');
+    });
   </script>
 </body>
 </html>
+
