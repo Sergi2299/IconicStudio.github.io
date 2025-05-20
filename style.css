@@ -1,4 +1,3 @@
-/* Fuente principal */
 body {
   margin: 0;
   font-family: 'Orbitron', sans-serif;
@@ -42,7 +41,6 @@ header {
   font-style: italic;
 }
 
-/* Responsive logo y textos header */
 @media (max-width: 600px) {
   .logo-img {
     width: 60px;
@@ -74,7 +72,7 @@ nav a:hover {
   color: #00bfff;
 }
 
-/* Secciones generales */
+/* Secciones */
 section {
   padding: 40px 20px;
   max-width: 1000px;
@@ -117,50 +115,8 @@ h2 {
   transform: scale(1.05);
 }
 
-/* Formulario de contacto */
+/* Formulario */
 form {
   max-width: 600px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
+  margin:
 
-form input,
-form textarea {
-  padding: 12px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-family: 'Orbitron', sans-serif;
-}
-
-form input:focus,
-form textarea:focus {
-  border-color: #00bfff;
-  outline: none;
-}
-
-button {
-  background-color: #00bfff;
-  color: white;
-  border: none;
-  padding: 12px;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #0099cc;
-}
-
-/* Footer */
-footer {
-  background-color: #111;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  font-size: 0.9rem;
-}
