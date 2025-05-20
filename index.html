@@ -2,12 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Iconic Studio</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
-  
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
 </head>
 <body>
@@ -54,6 +52,10 @@
       <input type="text" name="nombre" placeholder="Tu nombre" required />
       <input type="email" name="email" placeholder="Tu email" required />
       <textarea name="mensaje" placeholder="Escribe tu mensaje..." rows="5" required></textarea>
+      
+      <label for="captcha-input" class="captcha-label">Escribe el número: <span id="captcha-code"></span></label>
+      <input type="text" id="captcha-input" name="captcha" placeholder="Ejemplo: 8976" required pattern="\d{4}" maxlength="4" />
+
       <button type="submit">Enviar mensaje</button>
     </form>
 
@@ -66,9 +68,42 @@
     &copy; 2025 Iconic Studio. Todos los derechos reservados.
   </footer>
 
+  <!-- Aviso cookies a pantalla completa -->
+  <div class="cookie-consent" id="cookie-consent" role="alert" aria-live="polite" aria-atomic="true">
+    <p>
+      Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra
+      <a href="#" target="_blank" rel="noopener noreferrer">Política de privacidad</a> y
+      <a href="#" target="_blank" rel="noopener noreferrer">Aviso legal</a>.
+    </p>
+    <button id="btn-accept-cookies" aria-label="Aceptar cookies">Aceptar</button>
+  </div>
+
   <script>
+    // CAPTCHA aleatorio de 4 dígitos
+    const captchaCodeEl = document.getElementById("captcha-code");
+    let currentCaptcha = '';
+
+    function generarCaptcha() {
+      currentCaptcha = '';
+      for(let i=0; i<4; i++) {
+        currentCaptcha += Math.floor(Math.random() * 10);
+      }
+      captchaCodeEl.textContent = currentCaptcha;
+    }
+
+    generarCaptcha();
+
+    // Validar formulario con captcha
     document.getElementById("formulario-contacto").addEventListener("submit", function (e) {
       e.preventDefault();
+
+      const captchaInput = document.getElementById("captcha-input").value.trim();
+
+      if(captchaInput !== currentCaptcha) {
+        alert("Captcha incorrecto. Por favor, introduce el número correcto.");
+        generarCaptcha(); // Regenerar captcha si falla
+        return;
+      }
 
       const formData = new FormData(this);
 
@@ -81,15 +116,39 @@
       }).then(response => {
         if (response.ok) {
           this.reset();
+          generarCaptcha();
           document.getElementById("mensaje-enviado").style.display = "block";
+          setTimeout(() => {
+            document.getElementById("mensaje-enviado").style.display = "none";
+          }, 5000);
         } else {
           alert("Ocurrió un error al enviar el mensaje.");
         }
-      }).catch(error => {
+      }).catch(() => {
         alert("Error al enviar el formulario. Intenta de nuevo.");
       });
+    });
+
+    // Cookies: mostrar pantalla completa si no hay consentimiento
+    const cookieConsent = document.getElementById('cookie-consent');
+    const btnAcceptCookies = document.getElementById('btn-accept-cookies');
+
+    function checkCookieConsent() {
+      return localStorage.getItem('cookieConsent') === 'true';
+    }
+
+    function setCookieConsent() {
+      localStorage.setItem('cookieConsent', 'true');
+      cookieConsent.classList.add('hide');
+    }
+
+    if (checkCookieConsent()) {
+      cookieConsent.style.display = 'none';
+    }
+
+    btnAcceptCookies.addEventListener('click', () => {
+      setCookieConsent();
     });
   </script>
 </body>
 </html>
-
