@@ -52,7 +52,7 @@
       <input type="text" name="nombre" placeholder="Tu nombre" required />
       <input type="email" name="email" placeholder="Tu email" required />
       <textarea name="mensaje" placeholder="Escribe tu mensaje..." rows="5" required></textarea>
-      
+
       <label for="captcha-input" class="captcha-label">Escribe el número: <span id="captcha-code"></span></label>
       <input type="text" id="captcha-input" name="captcha" placeholder="Ejemplo: 8976" required pattern="\d{4}" maxlength="4" />
 
@@ -68,16 +68,18 @@
     &copy; 2025 Iconic Studio. Todos los derechos reservados.
   </footer>
 
-  <!-- Aviso cookies a pantalla completa -->
+  <!-- Aviso cookies invasivo -->
   <div class="cookie-consent" id="cookie-consent" role="alert" aria-live="polite" aria-atomic="true">
-    <p>
-      Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra
-      <a href="#" target="_blank" rel="noopener noreferrer">Política de privacidad</a> y
-      <a href="#" target="_blank" rel="noopener noreferrer">Aviso legal</a>.
-    </p>
-    <div class="cookie-buttons">
-      <button id="btn-accept-cookies" aria-label="Aceptar cookies">Aceptar</button>
-      <button id="btn-reject-cookies" aria-label="Rechazar cookies">Rechazar</button>
+    <div class="cookie-box">
+      <p>
+        Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra
+        <a href="#" target="_blank" rel="noopener noreferrer">Política de privacidad</a> y
+        <a href="#" target="_blank" rel="noopener noreferrer">Aviso legal</a>.
+      </p>
+      <div class="cookie-buttons">
+        <button id="btn-accept-cookies">Aceptar</button>
+        <button id="btn-reject-cookies">Rechazar</button>
+      </div>
     </div>
   </div>
 
@@ -88,7 +90,7 @@
 
     function generarCaptcha() {
       currentCaptcha = '';
-      for(let i=0; i<4; i++) {
+      for (let i = 0; i < 4; i++) {
         currentCaptcha += Math.floor(Math.random() * 10);
       }
       captchaCodeEl.textContent = currentCaptcha;
@@ -102,7 +104,7 @@
 
       const captchaInput = document.getElementById("captcha-input").value.trim();
 
-      if(captchaInput !== currentCaptcha) {
+      if (captchaInput !== currentCaptcha) {
         alert("Captcha incorrecto. Por favor, introduce el número correcto.");
         generarCaptcha(); // Regenerar captcha si falla
         return;
@@ -138,30 +140,20 @@
     const btnRejectCookies = document.getElementById('btn-reject-cookies');
 
     function checkCookieConsent() {
-      return localStorage.getItem('cookieConsent') === 'true';
+      return localStorage.getItem('cookieConsent') === 'accepted' || localStorage.getItem('cookieConsent') === 'rejected';
     }
 
-    function setCookieConsent() {
-      localStorage.setItem('cookieConsent', 'true');
-      cookieConsent.classList.add('hide');
-    }
-
-    function hideCookieBanner() {
-      cookieConsent.classList.add('hide');
+    function setCookieConsent(value) {
+      localStorage.setItem('cookieConsent', value);
+      cookieConsent.style.display = 'none';
     }
 
     if (checkCookieConsent()) {
       cookieConsent.style.display = 'none';
     }
 
-    btnAcceptCookies.addEventListener('click', () => {
-      setCookieConsent();
-    });
-
-    btnRejectCookies.addEventListener('click', () => {
-      hideCookieBanner();
-    });
+    btnAcceptCookies.addEventListener('click', () => setCookieConsent('accepted'));
+    btnRejectCookies.addEventListener('click', () => setCookieConsent('rejected'));
   </script>
 </body>
 </html>
-
