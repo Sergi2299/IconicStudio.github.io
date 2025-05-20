@@ -75,7 +75,10 @@
       <a href="#" target="_blank" rel="noopener noreferrer">Política de privacidad</a> y
       <a href="#" target="_blank" rel="noopener noreferrer">Aviso legal</a>.
     </p>
-    <button id="btn-accept-cookies" aria-label="Aceptar cookies">Aceptar</button>
+    <div class="cookie-buttons">
+      <button id="btn-accept-cookies" aria-label="Aceptar cookies">Aceptar</button>
+      <button id="btn-reject-cookies" aria-label="Rechazar cookies">Rechazar</button>
+    </div>
   </div>
 
   <script>
@@ -129,9 +132,10 @@
       });
     });
 
-    // Cookies: mostrar pantalla completa si no hay consentimiento
+    // Aviso cookies
     const cookieConsent = document.getElementById('cookie-consent');
     const btnAcceptCookies = document.getElementById('btn-accept-cookies');
+    const btnRejectCookies = document.getElementById('btn-reject-cookies');
 
     function checkCookieConsent() {
       return localStorage.getItem('cookieConsent') === 'true';
@@ -142,6 +146,10 @@
       cookieConsent.classList.add('hide');
     }
 
+    function hideCookieBanner() {
+      cookieConsent.classList.add('hide');
+    }
+
     if (checkCookieConsent()) {
       cookieConsent.style.display = 'none';
     }
@@ -149,6 +157,11 @@
     btnAcceptCookies.addEventListener('click', () => {
       setCookieConsent();
     });
+
+    btnRejectCookies.addEventListener('click', () => {
+      hideCookieBanner();
+    });
   </script>
 </body>
 </html>
+
