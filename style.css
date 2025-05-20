@@ -1,3 +1,4 @@
+/* Fuente principal */
 body {
   margin: 0;
   font-family: 'Orbitron', sans-serif;
@@ -86,6 +87,7 @@ h2 {
   color: #111;
 }
 
+/* Servicios */
 .servicio {
   background-color: white;
   border-left: 5px solid #00bfff;
@@ -94,6 +96,7 @@ h2 {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* Galería */
 .imagenes {
   display: flex;
   flex-wrap: wrap;
@@ -158,6 +161,7 @@ button:hover {
   background-color: #0099cc;
 }
 
+/* Footer */
 footer {
   background-color: #111;
   color: white;
@@ -166,36 +170,35 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Estilo invasivo para aviso de cookies */
+/* Aviso de cookies en pantalla completa */
 .cookie-consent {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
-  display: flex;
+  background-color: rgba(0,0,0,0.8);
+  display: none;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  z-index: 9999;
 }
 
 .cookie-box {
   background: white;
-  color: #111;
   padding: 30px;
   border-radius: 20px;
   max-width: 500px;
-  width: 100%;
+  width: 90%;
   text-align: center;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 30px rgba(0, 191, 255, 0.6);
+  font-family: 'Orbitron', sans-serif;
 }
 
 .cookie-box p {
   margin-bottom: 20px;
   font-size: 1.1rem;
-  line-height: 1.5;
+  color: #333;
 }
 
 .cookie-box a {
@@ -205,34 +208,35 @@ footer {
 
 .cookie-buttons {
   display: flex;
-  justify-content: center;
   gap: 15px;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .cookie-buttons button {
+  background-color: #004466;
+  border-radius: 20px;
   padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  background-color: #00bfff;
   color: white;
   font-weight: bold;
+  border: none;
   cursor: pointer;
-  font-family: 'Orbitron', sans-serif;
   transition: background-color 0.3s ease;
 }
 
 .cookie-buttons button:hover {
-  background-color: #0099cc;
+  background-color: #006699;
 }
 
 @media (max-width: 500px) {
   .cookie-box {
     padding: 20px;
   }
+
   .cookie-buttons {
     flex-direction: column;
   }
+
   .cookie-buttons button {
     width: 100%;
   }
